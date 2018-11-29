@@ -205,6 +205,8 @@ interviews$year <- year(dates)
 
 str(interviews)
 
-descr(respondent_wall_type)
 
-desc(interviews)
+################### After lunch session ##################
+##########################################################
+
+
