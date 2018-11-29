@@ -34,3 +34,23 @@ interviews %>% filter(village == "God") %>%
 
 interviews_Chirodzo2 <- interviews %>% filter(village == "Chirodzo") %>% select(no_membrs, years_liv)
 
+
+##############EXERCISE ################
+
+
+#Using pipes, subset the interviews data to include interviews 
+
+#where respondents were members of an irrigation association (memb_assoc) #and retain only the columns affect_conflicts, liv_count, and no_meals.###
+
+interviews %>% filter(memb_assoc == "yes") %>%
+  select(affect_conflicts, liv_count, no_meals)
+
+# Want to add some new variable that is derived from others - we may want to know the average number of occupants per room - data continas how many rooms and household members, but is not expressed the way that we want - therefore mutaute - which allows us to add new columns ##
+
+########### Mutate #####
+
+interviews <- interviews %>% mutate(people_per_room = no_membrs/rooms)
+
+
+
+
