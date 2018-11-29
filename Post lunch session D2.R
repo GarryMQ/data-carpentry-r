@@ -111,4 +111,30 @@ interviews %>% group_by(village) %>%
             max_membrs = max(no_membrs),
             n=n())
 
+################### After afternoon tea ################
+
+# Reshaping - wall type might want to have one colum for this respondent or not. 
+
+# tidyverse uses spread, then the key column, and that is the colum that will provide with the names of the new we want to create - to hold information for the new count, then another column that holds the data you want to spread out to. So what we are talking about and what is associaed with the value. Each occurance will be translated into TRUE. With mutated data frame, we can use this as value
+
+interviews <- interviews %>%
+  mutate(wall_type_logical = TRUE) %>%
+  spread(key = respondent_wall_type, value = wall_type_logical, fill = FALSE)
+
+# to undo the above, use gather ####
+# will ask for a key column which will be the names of the column to create - to complress into a single column - going to be called respondent wall type - which od the three that was true
+
+# burnt briacks to sunbriack captires all of them
+
+interviews <- interviews_spread %>%
+  gather(key = respondent_wall_type, value = "wall_type_logical",
+         burntbricks:sunbricks)
+ #### each respondent now has 4 entries for the wall-type ####
+
+### reshaping is good for reprganising the data
+# you might it want it in a differentt form from analysis to presentaiton ####
+
+################# PRESENTATION  #####################
+
+interviews <- read_csv("data/SAFI_clean.csv", na="NULL")
             
